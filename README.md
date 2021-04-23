@@ -1,11 +1,13 @@
 
-# Minimal CMake example
+# SCARA Robot
+The aim of the project is to create a .cpp program which generate an SVG drawing of a SCARA Robot
+## Constraints
+The device must satisfy these constraints:
+    * all dimension *must* be strictly positive values
+    * the diameter "d" of revolute joints must be less than or equal to the width "s" of the arms
+    * arms must have the same width
+    * arms of different lengths are allowed
+    * the angle of the second arm must be different from 0 with respect to the first arm
 
 
-A stripped down CMake project with tests for a MyFraction C-like example and some C++ functions.
 
-
-## Credits:
-
-- MyFraction stuff: David Leoni
-- original version: Luca Olivieri
