@@ -7,7 +7,7 @@ int main() {
     //some data
     unsigned int thickness = 60;
     unsigned int length = 500;
-    unsigned int radius = 30;
+    unsigned int radius = 25;
     int q1 = - 45;
     int q2 = - 60;
     int x = 200;
@@ -23,6 +23,11 @@ int main() {
     cout << "Writing svg string... " << endl;
 
     string s = fc_scara_to_svg(scara);
+    cout << "the svg string is: \n" + s << endl;
+
+    scara = fc_set(scara);
+
+    s = fc_scara_to_svg(scara);
     cout << "the svg string is: \n" + s << endl;
     
     cout << "end of the program!" << endl;

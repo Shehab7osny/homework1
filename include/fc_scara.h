@@ -25,6 +25,12 @@ struct fc_scara {
     int q2; // angle of the 2nd arm with respect to the 1st  
     fc_frame origin; //position of the joint connected to the frame  
     int svg_width; // width of the svg window equal to heigth
+    /*
+        further implementations:
+        adding fields which takes into account for the x and y position of the second revolute joint
+        add fields which takes into account for the translation of all objects, maybe you can add a field 
+        named: translation_first_arm for example
+    */
 };
 /*
     declaration of function for building the robot & check constraints
@@ -49,6 +55,20 @@ fc_scara* fc_scara_init( unsigned int thickness, unsigned int length, unsigned i
     return string with svg data
 */
 string fc_scara_to_svg(fc_scara* scara);
+
+/*
+    Function which allow to modify the dimensions of he robot according to the given constraint
+    @param pointer to the structure you want to modify
+    @param the thickness of arms
+    @param length
+    @param diameter
+    @param q1
+    @parma q2
+    @param origin
+
+    return pointer to the updated structure
+*/
+fc_scara* fc_set(fc_scara* robot);
 
 /*
     This function delete the dynamic memory for the robot
