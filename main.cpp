@@ -1,27 +1,33 @@
-#include <iostream>
-
-#include "my_fraction.h"
-#include "cxx_examples.h"
+#include <fc_scara.h>
 
 using namespace std;
 
 int main() {
 
+    //some data
+    unsigned int thickness = 60;
+    unsigned int length = 500;
+    unsigned int radius = 30;
+    int q1 = - 45;
+    int q2 = - 60;
+    int x = 200;
+    int y = 900;
 
-    MyFraction * frac = my_init(3,5);
+    //initialisation of a new robot:
+     fc_scara* scara;
 
-    cout << "MyFraction: " << frac->a << " / " << frac->b << endl;
+     scara = fc_scara_init(thickness, length,  radius,  q1, q2,  x,  y);
 
-    cout << "say_hello: " << cxx_examples::say_hello("Peppo") << endl;
 
-    try {
-        cout << "negative square_root: " << cxx_examples::square_root(-1.0) << endl;
-    } catch (exception& ex) {
-        cout << "something bad happened!" << ex.what() << endl;
-        cout << "I caught the exception, will continue" << endl;
-    };
+    cout << "Scara robot mark1 test: "<< endl;
+    cout << "Writing svg string... " << endl;
 
+    string s = fc_scara_to_svg(scara);
+    cout << "the svg string is: \n" + s << endl;
+    
     cout << "end of the program!" << endl;
+
+    delete_robot(scara);
 
     return 0;
 }
