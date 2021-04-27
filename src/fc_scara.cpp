@@ -1,17 +1,17 @@
 #include "fc_scara.h"
 
-fc_scara* fc_scara_init (unsigned int thickness, unsigned int length, unsigned int radius, int q1, int q2, int x, int y){
+fc_scara* fc_scara_init (int thickness, int length,  int radius, int q1, int q2, int x, int y){
     // check constraints
     /*
         maybe you should check that the svg fle is of the correct dimensions, you can calculate the dimensions of the svg file 
     */
-    if (thickness <= 0 || length <= 0 || radius <= 0){
+    if (thickness <= 0|| thickness >= (length)/4 || length <= 0 || length > 200 || radius <= 0){
         return NULL;
     }
-    else if (q2 == 0){
+    else if (q2 == 180){
         return  NULL;   
     }
-    else if (radius >= (thickness)/2) {
+    else if (2*radius > thickness) {
         return NULL;
     }
     else{
@@ -37,9 +37,12 @@ fc_scara* fc_scara_init (unsigned int thickness, unsigned int length, unsigned i
 }
    string fc_scara_to_svg(fc_scara* scara){
     
-       string scara_svg = "<!--this is an svg representation of a SCARA robot -->\n";
-        //drawing the svg window:
-       scara_svg += "<svg width = \"" + to_string(scara -> svg_width + scara->origin.x) + "\" height = \"" + to_string(scara -> svg_width+scara->origin.y) + "\">\n";
+       
+       string scara_svg;
+       //declaration of xml 
+       scara_svg += "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?> \n";
+       //svg namespace
+       scara_svg += "<svg xmlns=\"http://www.w3.org/2000/svg\" width = \"" + to_string(scara -> svg_width + scara->origin.x) + "\" height = \"" + to_string(scara -> svg_width+scara->origin.y) + "\">\n";
        // creating a group of images
        scara_svg += "<g transform = \"rotate(" + to_string(scara->q1) + " " + to_string(scara->origin.x) + " " + to_string(scara->origin.y) + ") translate("+ to_string(scara->origin.x - scara->radius) + "," + to_string(scara->origin.y - (scara->thickness)/2)+")\" ";   
        // rectangle style
@@ -64,50 +67,64 @@ fc_scara* fc_scara_init (unsigned int thickness, unsigned int length, unsigned i
        return scara_svg;
    }
 
-   fc_scara* fc_set(fc_scara* robot){
+   int fc_set_thickness(fc_scara* robot,  int new_thickness){
 
-       char parameters[5][10] = {"thickness","length","radius","q1","q2"};
-       string s; //auxiliary string
-       int p; // auxiliary integer
-       cout << "Which parameter do you want to uptade?"<<endl;
-       cout << "enter \"no\" to keep unchanged" << endl;
-       
-       for(int i=0; i <= 4; i++){
-
-           cout << parameters[i] << "=";
-           cin >> s;
-           if (s != "no"){
-               p = stoi(s);
-               
-               if (i==0 && p > 0){
-                   robot -> thickness = p;
-               }
-               else if (i == 1 && p > 0){
-                   robot -> length = p;
-               }
-               else if(i == 2 && p > 0 && (2 * p) <= (robot -> thickness) ){
-                   robot -> radius = p;
-               }
-               else if(i == 3){
-                   robot -> q1 = p;
-               }
-               else if(i == 4 && p != 0){
-                   robot -> q2 = p;
-               } // necessary to add the possibility to modify the x,y position of the robot
-               else{
-                   cout << "constraint violated" << endl;
-                    i--;
-               }
-               
-           }
-
+       if (new_thickness <= 0|| 4*new_thickness >= robot->length|| new_thickness <= (robot -> radius)*2){
+           return 1;
        };
-       
-       return robot;
-        
+       robot -> thickness = new_thickness;
+       return 0;
    }
 
-   void delete_robot(fc_scara* robot){
+   int fc_set_length(fc_scara* robot, int new_length){
+
+       if (new_length > 200 || new_length <= 0){
+           return 1;
+       };
+
+       robot -> length = new_length;
+       return 0;
+   }
+
+   int fc_set_radius(fc_scara* robot, int new_radius){
+       if (2 * new_radius > (robot -> thickness) || new_radius <= 0){
+           return 1;
+       };
+
+       robot-> radius = new_radius;
+       return 0;
+   }
+
+   int fc_set_q1(fc_scara* robot, int new_q1){
+       robot-> q1 = new_q1;
+       return 0;
+   }
+
+   int fc_set_q2(fc_scara* robot, int new_q2){
+       if (new_q2 == 180){
+           return 1;
+       }
+       robot-> q2 = new_q2;
+       return 0;
+   }
+
+
+
+   int fc_set_frame(fc_scara* robot, int new_x, int new_y){
+       if(new_x < 0 || new_y < 0){
+           return 1;
+       };
+
+       robot -> origin.x = new_x;
+       robot -> origin.y = new_y;
+
+       return 0;
+   }
+
+
+
+
+   void fc_delete_robot(fc_scara* robot){
        delete robot;
    }
 

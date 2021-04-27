@@ -5,6 +5,7 @@
 #include <string>
 #include <math.h>
 
+
 using namespace std;
 /*
     This structure defines the coordinates of the frame
@@ -18,9 +19,9 @@ struct fc_frame {
     structure with dimensions of the robot
 */
 struct fc_scara {
-    unsigned int thickness; //arm thickness
-    unsigned int length; //arm length
-    unsigned int radius;//revolute joint radius
+    int thickness; //arm thickness
+    int length; //arm length
+    int radius;//revolute joint radius
     int q1; // angle of 1st arm with respect to the x-axis
     int q2; // angle of the 2nd arm with respect to the 1st  
     fc_frame origin; //position of the joint connected to the frame  
@@ -47,7 +48,7 @@ struct fc_scara {
     - if q2 == 0, returns NULL
     - if diameter > thickness, returns NULL
 */
-fc_scara* fc_scara_init( unsigned int thickness, unsigned int length, unsigned int radius, int q1, int q2, int x, int y);
+fc_scara* fc_scara_init( int thickness, int length,  int radius, int q1, int q2, int x, int y);
 
 /*
     This function will create a svg string which will draw the robot
@@ -57,22 +58,68 @@ fc_scara* fc_scara_init( unsigned int thickness, unsigned int length, unsigned i
 string fc_scara_to_svg(fc_scara* scara);
 
 /*
-    Function which allow to modify the dimensions of he robot according to the given constraint
-    @param pointer to the structure you want to modify
-    @param the thickness of arms
-    @param length
-    @param diameter
-    @param q1
-    @parma q2
-    @param origin
-
-    return pointer to the updated structure
+    Function used to change thickness of an existing structure
+    @param pointer to an existing structure
+    @param new value thickness
+    return value:
+        - 1 if constraints are violated
+        - 0 if constraints are satisfied
 */
-fc_scara* fc_set(fc_scara* robot);
+int fc_set_thickness(fc_scara* robot, int new_thickness);
+
+/*
+    Function used to change length of an existing structure
+    @param pointer to an existing structure
+    @param new value 
+    return value:
+        - 1 if constraints are violated
+        - 0 if constraints are satisfied
+*/
+int fc_set_length(fc_scara* robot, int new_length);
+
+/*
+    Function used to change radius of an existing structure
+    @param pointer to an existing structure
+    @param new value 
+    return value:
+        - 1 if constraints are violated
+        - 0 if constraints are satisfied
+*/
+int fc_set_radius(fc_scara* robot, int new_radius);
+
+/*
+    Function used to change q1 of an existing structure
+    @param pointer to an existing structure
+    @param new value 
+    return value:
+        - 1 if constraints are violated
+        - 0 if constraints are satisfied
+*/
+int fc_set_q1(fc_scara* robot, int new_q1);
+
+/*
+    Function used to change q2 of an existing structure
+    @param pointer to an existing structure
+    @param new value 
+    return value:
+        - 1 if constraints are violated
+        - 0 if constraints are satisfied
+*/
+int fc_set_q2(fc_scara* robot, int new_q2);
+
+/*
+    Function used to change the position of the frame of an existing structure
+    @param pointer to an existing structure
+    @param new value 
+    return value:
+        - 1 if constraints are violated
+        - 0 if constraints are satisfied
+*/
+int fc_set_frame(fc_scara* robot, int new_x, int new_y);
 
 /*
     This function delete the dynamic memory for the robot
 */
-void delete_robot(fc_scara* robot);
+void fc_delete_robot(fc_scara* robot);
 
 #endif
