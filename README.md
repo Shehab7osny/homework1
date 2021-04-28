@@ -9,5 +9,7 @@ The device must satisfy these constraints:
     *  arms of different lengths are *not* allowed
     *  the angle of the second arm must be different from 0 with respect to the first arm
 
+<img src=/.build/scara.svg>
+
 
 
