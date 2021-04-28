@@ -466,6 +466,14 @@ CMakeFiles/mainEntry.dir/src/fc_scara.cpp.o
  /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h
  /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset
  /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference
+ /Users/federicocorso/tpa/homework1/include/fc_svg.h
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/stack
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/deque
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/sstream
 
 CMakeFiles/mainEntry.dir/src/fc_svg.cpp.o
  /Users/federicocorso/tpa/homework1/src/fc_svg.cpp

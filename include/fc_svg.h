@@ -8,13 +8,13 @@
 #include <sstream>
 
 using namespace std;
-
 /*
-    This function interpret svg code in order to build a structure representing a device
-    @param string containing the name of the file you want to read
-    @return a pointer to a new struct
+    This function will create a structure frm a given svg file containing the representation of a scara robot
+    @param the file name
+    @return string containing the file content
+
 */
-//string fc_read_svg_device(string filename);
+string fc_read_svg_device (string filename);
 
 /*
     function to save in a file the svg epresentation of the device

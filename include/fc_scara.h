@@ -5,6 +5,8 @@
 #include <string>
 #include <math.h>
 
+#include "fc_svg.h"
+
 
 using namespace std;
 /*
@@ -116,6 +118,14 @@ int fc_set_q2(fc_scara* robot, int new_q2);
         - 0 if constraints are satisfied
 */
 int fc_set_frame(fc_scara* robot, int new_x, int new_y);
+
+/*
+    function which creates a structure from reading the svg file
+    @param string with file content
+    @return pointer to a structure
+
+*/
+fc_scara* fc_svg_to_scara(string content);
 
 /*
     This function delete the dynamic memory for the robot

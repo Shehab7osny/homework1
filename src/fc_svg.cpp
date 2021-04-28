@@ -1,6 +1,18 @@
 #include "fc_svg.h"
 
-//string fc_read_svg_device(string filename){}
+string fc_read_svg_device (string filename){
+    
+    ifstream t(filename);
+    stringstream buffer;
+
+    buffer << t.rdbuf();
+    string s = buffer.str();
+
+    cout << "Il file " << filename << " e` stato letto" << endl;
+
+    return s;
+
+}
 
 void fc_save(string svg_rep){
     

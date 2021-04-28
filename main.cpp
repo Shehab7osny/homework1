@@ -36,10 +36,31 @@ int main() {
     string s = fc_scara_to_svg(scara);
     cout << "the svg string is: \n \n" + s << endl;
     
-    cout << "end of the program!" << endl;
+
+    cout << "save your file: " << endl;
 
     fc_save(s);
+
+    //string containing filename
+    string p;
+
+    cout << "nome file: " << endl;
+
+    cin >> p;
+
+    string h = fc_read_svg_device (p);
+
+    cout << h;
+
+    scara = fc_svg_to_scara(h);
+
+    s = fc_scara_to_svg(scara);
+    cout << "the svg string is: \n \n" + s << endl;
+    
+
     fc_delete_robot(scara);
+
+    cout << "end of the program!" << endl;
 
     return 0;
 }
