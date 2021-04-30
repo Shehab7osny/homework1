@@ -12,5 +12,7 @@ The device must satisfy these constraints:
 
 ![](homework1/build/scara.svg)
 
+...
+
 
 
