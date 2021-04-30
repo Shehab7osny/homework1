@@ -15,3 +15,9 @@ target_sources(mainEntry PRIVATE src/fc_scara.cpp
                                  )
 target_link_libraries(mainEntry)
 
+# TESTS SECTION
+# Basically makes CMake read the CMakeLists.txt file contained in tests
+add_subdirectory(tests)
+
+
+

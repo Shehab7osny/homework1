@@ -52,12 +52,6 @@ struct fc_scara {
 */
 fc_scara* fc_scara_init( int thickness, int length,  int radius, int q1, int q2, int x, int y);
 
-/*
-    This function will create a svg string which will draw the robot
-    @param a pointer to the structure containing the data for the piston
-    return string with svg data
-*/
-string fc_scara_to_svg(fc_scara* scara);
 
 /*
     Function used to change thickness of an existing structure
@@ -120,6 +114,13 @@ int fc_set_q2(fc_scara* robot, int new_q2);
 int fc_set_frame(fc_scara* robot, int new_x, int new_y);
 
 /*
+    This function will create a svg string which will draw the robot
+    @param a pointer to the structure containing the data for the piston
+    return string with svg data
+*/
+string fc_scara_to_svg(fc_scara* scara);
+
+/*
     function which creates a structure from reading the svg file
     @param string with file content
     @return pointer to a structure
@@ -131,5 +132,15 @@ fc_scara* fc_svg_to_scara(string content);
     This function delete the dynamic memory for the robot
 */
 void fc_delete_robot(fc_scara* robot);
+
+/*
+    Function which loads a structure from a file
+*/
+fc_scara* fc_load_from_file(string filename);
+
+/*
+    function to save on file 
+*/
+string fc_scara_save(fc_scara* scara);
 
 #endif

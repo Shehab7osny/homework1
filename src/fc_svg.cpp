@@ -14,7 +14,7 @@ string fc_read_svg_device (string filename){
 
 }
 
-void fc_save(string svg_rep){
+string fc_save(string svg_rep){
     
     string p; // auxiliary string
     //ask for the filename
@@ -28,6 +28,8 @@ void fc_save(string svg_rep){
     MyFile << content;
 
     MyFile.close();
+
+    return p;
 
 }
 

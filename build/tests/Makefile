@@ -130,6 +130,30 @@ catch2Test/fast:
 	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/build
 .PHONY : catch2Test/fast
 
+__/src/fc_scara.o: __/src/fc_scara.cpp.o
+.PHONY : __/src/fc_scara.o
+
+# target to build an object file
+__/src/fc_scara.cpp.o:
+	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o
+.PHONY : __/src/fc_scara.cpp.o
+
+__/src/fc_scara.i: __/src/fc_scara.cpp.i
+.PHONY : __/src/fc_scara.i
+
+# target to preprocess a source file
+__/src/fc_scara.cpp.i:
+	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.i
+.PHONY : __/src/fc_scara.cpp.i
+
+__/src/fc_scara.s: __/src/fc_scara.cpp.s
+.PHONY : __/src/fc_scara.s
+
+# target to generate assembly for a file
+__/src/fc_scara.cpp.s:
+	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.s
+.PHONY : __/src/fc_scara.cpp.s
+
 catch2Main.o: catch2Main.cpp.o
 .PHONY : catch2Main.o
 
@@ -154,6 +178,30 @@ catch2Main.cpp.s:
 	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/catch2Main.cpp.s
 .PHONY : catch2Main.cpp.s
 
+testfc_scara.o: testfc_scara.cpp.o
+.PHONY : testfc_scara.o
+
+# target to build an object file
+testfc_scara.cpp.o:
+	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.o
+.PHONY : testfc_scara.cpp.o
+
+testfc_scara.i: testfc_scara.cpp.i
+.PHONY : testfc_scara.i
+
+# target to preprocess a source file
+testfc_scara.cpp.i:
+	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.i
+.PHONY : testfc_scara.cpp.i
+
+testfc_scara.s: testfc_scara.cpp.s
+.PHONY : testfc_scara.s
+
+# target to generate assembly for a file
+testfc_scara.cpp.s:
+	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.s
+.PHONY : testfc_scara.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -163,9 +211,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... catch2Test"
+	@echo "... __/src/fc_scara.o"
+	@echo "... __/src/fc_scara.i"
+	@echo "... __/src/fc_scara.s"
 	@echo "... catch2Main.o"
 	@echo "... catch2Main.i"
 	@echo "... catch2Main.s"
+	@echo "... testfc_scara.o"
+	@echo "... testfc_scara.i"
+	@echo "... testfc_scara.s"
 .PHONY : help
 
 

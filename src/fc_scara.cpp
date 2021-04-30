@@ -250,20 +250,29 @@ fc_scara* fc_scara_init (int thickness, int length,  int radius, int q1, int q2,
     fc_scara* scara = fc_scara_init(thickness,length,radius,q1,q2,xc,yc);
 
     return scara;
-    
-    
-
-    
-
-    /*
-    if (strlen(aux) != 3 || )
-    */
 }
 // maybe implement a function which overwrite to a file using the .replace() method? //
 
-   void fc_delete_robot(fc_scara* robot){
-       delete robot;
-   }
 
+void fc_delete_robot(fc_scara* robot){
+    delete robot;
+}
+
+fc_scara* fc_load_from_file(string filename){
+    
+    string content = fc_read_svg_device(filename);
+
+    fc_scara* scara = fc_svg_to_scara(content);
+
+    return scara;
+}
+
+string fc_scara_save(fc_scara* scara){
+
+    string s = fc_scara_to_svg(scara);
+
+    return fc_save(s);
+
+}
 
 

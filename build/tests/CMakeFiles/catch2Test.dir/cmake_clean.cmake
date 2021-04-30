@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o"
+  "CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o.d"
   "CMakeFiles/catch2Test.dir/catch2Main.cpp.o"
   "CMakeFiles/catch2Test.dir/catch2Main.cpp.o.d"
+  "CMakeFiles/catch2Test.dir/testfc_scara.cpp.o"
+  "CMakeFiles/catch2Test.dir/testfc_scara.cpp.o.d"
   "catch2Test"
   "catch2Test.pdb"
 )

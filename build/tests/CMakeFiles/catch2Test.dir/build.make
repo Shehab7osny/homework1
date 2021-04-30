@@ -83,17 +83,49 @@ tests/CMakeFiles/catch2Test.dir/catch2Main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/catch2Test.dir/catch2Main.cpp.s"
 	cd /Users/federicocorso/tpa/homework1/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/federicocorso/tpa/homework1/tests/catch2Main.cpp -o CMakeFiles/catch2Test.dir/catch2Main.cpp.s
 
+tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.o: tests/CMakeFiles/catch2Test.dir/flags.make
+tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.o: ../tests/testfc_scara.cpp
+tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.o: tests/CMakeFiles/catch2Test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/federicocorso/tpa/homework1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.o"
+	cd /Users/federicocorso/tpa/homework1/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.o -MF CMakeFiles/catch2Test.dir/testfc_scara.cpp.o.d -o CMakeFiles/catch2Test.dir/testfc_scara.cpp.o -c /Users/federicocorso/tpa/homework1/tests/testfc_scara.cpp
+
+tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/catch2Test.dir/testfc_scara.cpp.i"
+	cd /Users/federicocorso/tpa/homework1/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/federicocorso/tpa/homework1/tests/testfc_scara.cpp > CMakeFiles/catch2Test.dir/testfc_scara.cpp.i
+
+tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/catch2Test.dir/testfc_scara.cpp.s"
+	cd /Users/federicocorso/tpa/homework1/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/federicocorso/tpa/homework1/tests/testfc_scara.cpp -o CMakeFiles/catch2Test.dir/testfc_scara.cpp.s
+
+tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o: tests/CMakeFiles/catch2Test.dir/flags.make
+tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o: ../src/fc_scara.cpp
+tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o: tests/CMakeFiles/catch2Test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/federicocorso/tpa/homework1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o"
+	cd /Users/federicocorso/tpa/homework1/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o -MF CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o.d -o CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o -c /Users/federicocorso/tpa/homework1/src/fc_scara.cpp
+
+tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.i"
+	cd /Users/federicocorso/tpa/homework1/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/federicocorso/tpa/homework1/src/fc_scara.cpp > CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.i
+
+tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.s"
+	cd /Users/federicocorso/tpa/homework1/build/tests && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/federicocorso/tpa/homework1/src/fc_scara.cpp -o CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.s
+
 # Object files for target catch2Test
 catch2Test_OBJECTS = \
-"CMakeFiles/catch2Test.dir/catch2Main.cpp.o"
+"CMakeFiles/catch2Test.dir/catch2Main.cpp.o" \
+"CMakeFiles/catch2Test.dir/testfc_scara.cpp.o" \
+"CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o"
 
 # External object files for target catch2Test
 catch2Test_EXTERNAL_OBJECTS =
 
 tests/catch2Test: tests/CMakeFiles/catch2Test.dir/catch2Main.cpp.o
+tests/catch2Test: tests/CMakeFiles/catch2Test.dir/testfc_scara.cpp.o
+tests/catch2Test: tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o
 tests/catch2Test: tests/CMakeFiles/catch2Test.dir/build.make
 tests/catch2Test: tests/CMakeFiles/catch2Test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/federicocorso/tpa/homework1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable catch2Test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/federicocorso/tpa/homework1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable catch2Test"
 	cd /Users/federicocorso/tpa/homework1/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/catch2Test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

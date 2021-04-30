@@ -22,7 +22,6 @@ string fc_read_svg_device (string filename);
     @param name of the file you want to create
     @return void
 */
-void fc_save(string svg_rep);
-
+string fc_save(string svg_rep);
 
 #endif

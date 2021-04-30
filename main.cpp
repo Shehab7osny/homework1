@@ -4,63 +4,168 @@
 using namespace std;
 
 int main() {
+    int thickness;
+    int length;
+    int radius;
+    int q1;
+    int q2;
+    int x;
+    int y;
 
-    //some data coherent with constraints
-    int thickness = 20;
-    int length = 200;
-    int radius = 10;
-    int q1 = - 45;
-    int q2 = - 60;
-    int x = 200;
-    int y = 900;
+    //variable to control the program flow
+    bool ex = true;
 
-    int new_thikness;
-    int new_length;
-    int new_radius;
-    int new_q1;
-    int new_q2;
-    int new_x;
-    int new_y;
+    //commandline program to create a structure, load a structure from an existing file and save to a file a new structure
+    char c; // choice parameter
+    char g;
+    string s; // string to store the svg string of the structure
+    string f; // string to store the name of the file
+    fc_scara* scara; // pointer to a structure
 
-    char parameters[7][10]={"thickness", "length", "radius", "q1","q2","x","y"};
-    
+    // messages for the user
+    cout << "Build your scara robot with this program!" << endl;
 
-    //initialisation of a new robot:
-    fc_scara* scara;
-
-    scara = fc_scara_init(thickness, length,  radius,  q1, q2,  x,  y);
-
-    cout << "Writing svg string... " << endl;
     cout << endl;
 
-    string s = fc_scara_to_svg(scara);
-    cout << "the svg string is: \n \n" + s << endl;
-    
+    cout << "Chose an option: "<< endl;
 
-    cout << "save your file: " << endl;
+    cout << endl;
+    while(ex == true){
+        cout << "Type \"1\" to create a new structure."<< endl;
+        cout << "Type \"2\" to create a structure from an existing svg file"<< endl;
+        cout << "Type \"3\" to save the structure to a new file"<< endl;
+        cout << "Type \"4\" to edit an existing structure" << endl;
+        cout << "Type \"5\" to delete the created structure" << endl;
+        cout << "Type \"6\" to end the execution  of the program" << endl;
 
-    fc_save(s);
+        // store the input 
+        cin >> c;
 
-    //string containing filename
-    string p;
+        switch(c){
+            case '1': {
+                //first check if a structure exist and if the user want to overwrite-> need implementation
 
-    cout << "nome file: " << endl;
+                // implementation of a function to ask parameters?
+                cout << "Enter a value for each parameter: " << endl;
 
-    cin >> p;
+                cout << "thickness: ";
+                cin >> thickness;
+                cout << endl;
 
-    string h = fc_read_svg_device (p);
+                cout << "length: ";
+                cin >> length;
+                cout << endl;
 
-    cout << h;
+                cout << "radius: ";
+                cin >> radius;
+                cout << endl;
 
-    scara = fc_svg_to_scara(h);
+                cout << "q1: ";
+                cin >> q1;
+                cout << endl;
 
-    s = fc_scara_to_svg(scara);
-    cout << "the svg string is: \n \n" + s << endl;
-    
+                cout << "q2: ";
+                cin >> q2;
+                cout << endl;
 
-    fc_delete_robot(scara);
+                cout << "x: ";
+                cin >> x;
+                cout << endl;
 
-    cout << "end of the program!" << endl;
+                cout << "y: ";
+                cin >> y;
+                cout << endl;
+
+
+                //initialization and save to a file of the new struct:
+                scara = fc_scara_init(thickness, length, radius, q1, q2, x, y);
+
+                break;
+        
+
+            }
+            case '2': {
+                //first check if a structure exist -> need implementation
+
+                cout << "Insert filename: ";
+                cin >> f;
+                cout << endl;
+                
+                scara = fc_load_from_file(f);
+
+                string s = fc_scara_to_svg(scara);
+                cout << "the svg string is: \n \n" + s << endl;
+
+                cout << "end of the program!" << endl;
+
+            }
+            case '3': {
+                //first check if a structure exist -> need implementation
+
+                f = fc_scara_save(scara);
+
+                cout << "struct created and saved to: " << f << " file" << endl;
+
+                cout << "end of the program!" << endl;
+
+                break;
+
+            }
+            case '4': {
+                /*
+                    first check if a structure exist -> need implementation
+
+                    ...
+                
+                */
+
+                //set thickness
+                cout << "thickness: ";
+                cin >> thickness;
+                cout << endl;
+
+                cout << fc_set_thickness(scara,thickness);
+
+                cout << "length: ";
+                cin >> length;
+                cout << endl;
+
+                cout << fc_set_thickness(scara,length);
+
+                cout << "radius: ";
+                cin >> radius;
+                cout << endl;
+
+                cout << fc_set_thickness(scara,radius);
+
+                cout << "q1: ";
+                cin >> q1;
+                cout << endl;
+
+                cout << fc_set_thickness(scara,q1);
+
+                cout << "q2: ";
+                cin >> q2;
+                cout << endl;
+
+                cout << fc_set_thickness(scara,q2);
+                break;
+            }
+            case '5': {
+
+                fc_delete_robot(scara);
+
+                break;
+            }
+            case '6':{
+                cout << "end of the program" << endl;
+                ex = false;
+
+                break;
+            }
+            defult: break;
+        }
+    }
 
     return 0;
 }
