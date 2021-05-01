@@ -36,7 +36,7 @@ struct fc_scara {
     */
 };
 /*
-    declaration of function for building the robot & check constraints
+    declaration of function for building the robot asking parameters values to the user & check constraints
     @param thickness
     @param length
     @param diameter
@@ -44,21 +44,27 @@ struct fc_scara {
     @parma q2
     @param x
     @param y
-    return pointer to a struct containing all dimension of the robot
+    @return pointer to a struct containing all dimension of the robot
 
     error signaling C-style
-    - if thickness, length, diameter, origin is <= 0, returns NULL
-    - if q2 == 0, returns NULL
-    - if diameter > thickness, returns NULL
+    - if thickness <= 0|| 4*thickness >= (length)|| length <= 0 || length > 200 || radius <= 0, returns NULL
+    - if q2 == 180, returns NULL
+    - if 2*radius > thickness, returns NULL
 */
 fc_scara* fc_scara_init( int thickness, int length,  int radius, int q1, int q2, int x, int y);
 
+/*
+    This function delete the dynamic memory for the robot
+    @param pointer to an existing structure
+    @return void
+*/
+void fc_delete_robot(fc_scara* robot);
 
 /*
     Function used to change thickness of an existing structure
     @param pointer to an existing structure
     @param new value thickness
-    return value:
+    @return value:
         - 1 if constraints are violated
         - 0 if constraints are satisfied
 */
@@ -68,7 +74,7 @@ int fc_set_thickness(fc_scara* robot, int new_thickness);
     Function used to change length of an existing structure
     @param pointer to an existing structure
     @param new value 
-    return value:
+    @return value:
         - 1 if constraints are violated
         - 0 if constraints are satisfied
 */
@@ -78,7 +84,7 @@ int fc_set_length(fc_scara* robot, int new_length);
     Function used to change radius of an existing structure
     @param pointer to an existing structure
     @param new value 
-    return value:
+    @return value:
         - 1 if constraints are violated
         - 0 if constraints are satisfied
 */
@@ -88,7 +94,7 @@ int fc_set_radius(fc_scara* robot, int new_radius);
     Function used to change q1 of an existing structure
     @param pointer to an existing structure
     @param new value 
-    return value:
+    @return value:
         - 1 if constraints are violated
         - 0 if constraints are satisfied
 */
@@ -98,7 +104,7 @@ int fc_set_q1(fc_scara* robot, int new_q1);
     Function used to change q2 of an existing structure
     @param pointer to an existing structure
     @param new value 
-    return value:
+    @return value:
         - 1 if constraints are violated
         - 0 if constraints are satisfied
 */
@@ -108,7 +114,7 @@ int fc_set_q2(fc_scara* robot, int new_q2);
     Function used to change the position of the frame of an existing structure
     @param pointer to an existing structure
     @param new value 
-    return value:
+    @return value:
         - 1 if constraints are violated
         - 0 if constraints are satisfied
 */
@@ -117,7 +123,7 @@ int fc_set_frame(fc_scara* robot, int new_x, int new_y);
 /*
     This function will create a svg string which will draw the robot
     @param a pointer to the structure containing the data for the piston
-    return string with svg data
+    @return string with svg data
 */
 string fc_scara_to_svg(fc_scara* scara);
 
@@ -130,32 +136,19 @@ string fc_scara_to_svg(fc_scara* scara);
 fc_scara* fc_svg_to_scara(string content);
 
 /*
-    This function delete the dynamic memory for the robot
-*/
-void fc_delete_robot(fc_scara* robot);
-
-/*
     Function which loads a structure from a file
+    @param string w\ filename
+    @return pointer to a struct of type fc_scara
 */
 fc_scara* fc_load_from_file(string filename);
 
 /*
     function to save on file 
+    @param pointer to a struct fc_scara
+    @return string w\ the filename
 */
 string fc_scara_save(fc_scara* scara);
 
-/*
-    This function check constraints and gives suggestion to the user
-    @param pointer to a structure fc_scara
-    @param thickness
-    @param length
-    @param diameter
-    @param q1
-    @parma q2
-    @param x
-    @param y
-    
-    @return string w\ suggestions
-*/
+
 
 #endif
