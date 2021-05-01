@@ -42,7 +42,8 @@ struct fc_scara {
     @param diameter
     @param q1
     @parma q2
-    @param origin
+    @param x
+    @param y
     return pointer to a struct containing all dimension of the robot
 
     error signaling C-style
@@ -142,5 +143,19 @@ fc_scara* fc_load_from_file(string filename);
     function to save on file 
 */
 string fc_scara_save(fc_scara* scara);
+
+/*
+    This function check constraints and gives suggestion to the user
+    @param pointer to a structure fc_scara
+    @param thickness
+    @param length
+    @param diameter
+    @param q1
+    @parma q2
+    @param x
+    @param y
+    
+    @return string w\ suggestions
+*/
 
 #endif
