@@ -1,0 +1,1 @@
+/usr/bin/clang++ -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/catch2Test.dir/catch2Main.cpp.o CMakeFiles/catch2Test.dir/testfc_scara.cpp.o CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.o -o catch2Test 

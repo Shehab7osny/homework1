@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> 
+<svg xmlns="http://www.w3.org/2000/svg" width = "600" height = "1300">
+<g transform = "rotate(-45 200 900) translate(190,890)" style =" fill:rgb(128,128,128);stroke-width:3;stroke:rgb(0,0,0)">
+<rect width = "200" height = "20" />
+<rect width ="200" height ="20" transform = "rotate(-60 190 10) translate(180,0)"/>
+<circle cx="190" cy="10" r="10" stroke=" black " stroke-width="3" fill=" white " /> 
+</g>
+<circle cx= "200" cy= "900" r= "10" stroke= " black " stroke-width="3" fill=" white " /> 
+</svg>
