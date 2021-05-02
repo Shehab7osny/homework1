@@ -78,6 +78,8 @@ The function won't ask for confirmation before overwriting.
 ### **Commandline program `main.cpp`**
 The `main.cpp`file contains a basic command line program which allows the user to create, load and save an svg file.
 This functin will explicitly ask the user the values of the parameters given in the [parameters list above](#param)
+### **`fc_ask_parameters()`**
+Use this function in the program to ask parameters to the user in a simple way
 
 ## Running the tests
 here write how to run tests and explain what these tests test and why

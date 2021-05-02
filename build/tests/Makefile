@@ -154,6 +154,30 @@ __/src/fc_scara.cpp.s:
 	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/__/src/fc_scara.cpp.s
 .PHONY : __/src/fc_scara.cpp.s
 
+__/src/fc_svg.o: __/src/fc_svg.cpp.o
+.PHONY : __/src/fc_svg.o
+
+# target to build an object file
+__/src/fc_svg.cpp.o:
+	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/__/src/fc_svg.cpp.o
+.PHONY : __/src/fc_svg.cpp.o
+
+__/src/fc_svg.i: __/src/fc_svg.cpp.i
+.PHONY : __/src/fc_svg.i
+
+# target to preprocess a source file
+__/src/fc_svg.cpp.i:
+	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/__/src/fc_svg.cpp.i
+.PHONY : __/src/fc_svg.cpp.i
+
+__/src/fc_svg.s: __/src/fc_svg.cpp.s
+.PHONY : __/src/fc_svg.s
+
+# target to generate assembly for a file
+__/src/fc_svg.cpp.s:
+	cd /Users/federicocorso/tpa/homework1/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/catch2Test.dir/build.make tests/CMakeFiles/catch2Test.dir/__/src/fc_svg.cpp.s
+.PHONY : __/src/fc_svg.cpp.s
+
 catch2Main.o: catch2Main.cpp.o
 .PHONY : catch2Main.o
 
@@ -214,6 +238,9 @@ help:
 	@echo "... __/src/fc_scara.o"
 	@echo "... __/src/fc_scara.i"
 	@echo "... __/src/fc_scara.s"
+	@echo "... __/src/fc_svg.o"
+	@echo "... __/src/fc_svg.i"
+	@echo "... __/src/fc_svg.s"
 	@echo "... catch2Main.o"
 	@echo "... catch2Main.i"
 	@echo "... catch2Main.s"
