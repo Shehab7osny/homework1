@@ -8,19 +8,18 @@
 #include <sstream>
 
 using namespace std;
-/*
-    This function will create a structure frm a given svg file containing the representation of a scara robot
-    @param the file name
-    @return string containing the file content
 
+/**
+ * Insert in a string the content of a file
+ * @param filename name of the file to read
+ * @return string  the file content
 */
 string fc_read_svg_device (string filename);
 
-/*
-    function to save in a file the svg epresentation of the device
-    @param string containing the svg representation
-    @param name of the file you want to create
-    @return void
+/**
+ * Save in a file the svg epresentation of the device
+ * @param svg_rep string with the svg representation of the structure to save
+ * @return string with filename
 */
 string fc_save(string svg_rep);
 

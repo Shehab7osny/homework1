@@ -2,10 +2,7 @@
 
 
 fc_scara* fc_scara_init (int thickness, int length,  int radius, int q1, int q2, int x, int y){
-    // check constraints
-    /*
-        maybe you should check that the svg fle is of the correct dimensions, you can calculate the dimensions of the svg file 
-    */
+    
     cout << "Enter a value for each parameter: " << endl;
 
     cout << "thickness: ";
@@ -50,18 +47,6 @@ fc_scara* fc_scara_init (int thickness, int length,  int radius, int q1, int q2,
     cout << "y: ";
     cin >> y;
     cout << endl;
-    /*
-    if (thickness <= 0|| thickness >= (length)/4 || length <= 0 || length > 200 || radius <= 0){
-        return NULL;
-    }
-    else if (q2 == 180){
-        return  NULL;   
-    }
-    else if (2*radius > thickness) {
-        return NULL;
-    }
-    else{
-    */
 
     /* 
         definition of a pointer to the struct scara 
@@ -218,7 +203,8 @@ string fc_scara_to_svg(fc_scara* scara){
         this function could be implemented in a better way by intriducing some kind of iteration
     */
     // improvement: instead of "= \"" you could search just "\"" -> try
-    // some useful strings
+
+    // some auxiliary strings
     string rotation = "= \"r";
     string space = " ";
     string svg_head = "<g";
@@ -237,12 +223,6 @@ string fc_scara_to_svg(fc_scara* scara){
     string check_str = content.substr(found1, 4);
     
     aux = content.substr(found1 +3, found2 - found1 - 3 ); // maybe this line could be deleted
-    /*
-    cout <<"string " << check_str << endl;
-    cout << "found1 " << found1 << endl;
-    cout << "found2 " << found2 << endl;
-    cout << "found3 " << found3 << endl;
-    */
 
     // extracting q1
     string aux1 = content.substr(found1 + 3 + r, found3 - found1 -3 -r);
