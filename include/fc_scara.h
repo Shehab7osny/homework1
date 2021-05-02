@@ -53,7 +53,7 @@ struct fc_scara {
  *  if q2 == 180, returns NULL
  *  if 2*radius > thickness, returns NULL
 */
-fc_scara* fc_scara_init( int thickness, int length,  int radius, int q1, int q2, int x, int y);
+fc_scara* fc_scara_init(int thickness,int length,int radius,int q1,int q2,int x,int y);
 
 /**
  * Delete the dynamic memory for the robot
@@ -70,7 +70,7 @@ void fc_delete_robot(fc_scara* robot);
  *     - 1 if constraints are violated
  *     - 0 if constraints are satisfied
 */
-int fc_set_thickness(fc_scara* robot, int new_thickness);
+int fc_set_thickness(fc_scara* robot);
 
 /**
  * Change length of an existing fc_scara structure
@@ -80,7 +80,7 @@ int fc_set_thickness(fc_scara* robot, int new_thickness);
  *     - 1 if constraints are violated
  *     - 0 if constraints are satisfied
 */
-int fc_set_length(fc_scara* robot, int new_length);
+int fc_set_length(fc_scara* robot);
 
 /**
  * Change radius parameter of an existing fc_scara structure
@@ -90,7 +90,7 @@ int fc_set_length(fc_scara* robot, int new_length);
  *     - 1 if constraints are violated
  *     - 0 if constraints are satisfied
 */
-int fc_set_radius(fc_scara* robot, int new_radius);
+int fc_set_radius(fc_scara* robot);
 
 /**
  * Change q1 parameter of an existing fc_scara structure
@@ -100,7 +100,7 @@ int fc_set_radius(fc_scara* robot, int new_radius);
  *     - 1 if constraints are violated
  *     - 0 if constraints are satisfied
 */
-int fc_set_q1(fc_scara* robot, int new_q1);
+int fc_set_q1(fc_scara* robot);
 
 /**
  * Change q2 parameter of an existing fc_scara structure
@@ -110,7 +110,7 @@ int fc_set_q1(fc_scara* robot, int new_q1);
  *     - 1 if constraints are violated
  *     - 0 if constraints are satisfied
 */
-int fc_set_q2(fc_scara* robot, int new_q2);
+int fc_set_q2(fc_scara* robot);
 
 /*
     Change the position of the frame of an existing structure
@@ -129,7 +129,7 @@ int fc_set_q2(fc_scara* robot, int new_q2);
  *     - 1 if constraints are violated
  *     - 0 if constraints are satisfied
 */
-int fc_set_frame(fc_scara* robot, int new_x, int new_y);
+int fc_set_frame(fc_scara* robot);
 
 /**
  * Create a string following svg formatting style 
@@ -159,6 +159,11 @@ fc_scara* fc_load_from_file(string filename);
 */
 string fc_scara_save(fc_scara* scara);
 
-
+/**
+ * Ask parameters to the user
+ * @param  int p[7] array of 7 integers, the parameters
+ * @return int* pointer to an array of integers
+*/
+int* fc_ask_parameters(int p[7]);
 
 #endif

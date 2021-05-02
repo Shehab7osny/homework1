@@ -4,15 +4,9 @@
 using namespace std;
 
 int main() {
-    // some auxiliary variables
-    int thickness;
-    int length;
-    int radius;
-    int q1;
-    int q2;
-    int x;
-    int y;
-
+    //array of int
+    int p[7];
+    int* pt;
     //variable to control the program flow
     bool ex = true;
 
@@ -68,8 +62,10 @@ int main() {
                             cout << endl;
 
                             if (answ == "Yes"){
+                                
+                                pt = fc_ask_parameters(p);
                                 //initialization and save to a file of the new struct:
-                                scara = fc_scara_init(thickness, length, radius, q1, q2, x, y);
+                                scara = fc_scara_init(pt[0],pt[1],pt[2],pt[3],pt[4],pt[5],pt[6]);
                                 
                                 break;
                             }
@@ -82,9 +78,10 @@ int main() {
                             
 
                         }
-
+                        
+                        pt = fc_ask_parameters(p);
                         //initialization and save to a file of the new struct:
-                        scara = fc_scara_init(thickness, length, radius, q1, q2, x, y);
+                        scara = fc_scara_init(pt[0],pt[1],pt[2],pt[3],pt[4],pt[5],pt[6]);
                         
                         break;
                     }
@@ -96,17 +93,17 @@ int main() {
                     }
 
                 }
+                pt = fc_ask_parameters(p);
 
-                //initialization and save to a file of the new struct:
-                scara = fc_scara_init(thickness, length, radius, q1, q2, x, y);
-
-                if (scara == NULL){
+                if (pt == NULL){
                     cout << endl;
                     cout << "constraint violated, exit from editing" << endl;
                     cout << endl;
                     break;
                 }
                 else{
+                    //initialization and save to a file of the new struct:
+                    scara = fc_scara_init(p[0],p[1],p[2],p[3],p[4],p[5],p[6]);
                     cout << endl;
                     cout << "New structure created succesfully!" << endl;
                     cout << endl;
@@ -175,36 +172,24 @@ int main() {
             }
             case '5': {
                 if(scara != NULL){
-                    //set thickness
-                    cout << "thickness: ";
-                    cin >> thickness;
+
+                    cout << fc_set_thickness(scara);
                     cout << endl;
 
-                    cout << fc_set_thickness(scara,thickness);
-
-                    cout << "length: ";
-                    cin >> length;
+                    cout << fc_set_length(scara);
                     cout << endl;
 
-                    cout << fc_set_thickness(scara,length);
-
-                    cout << "radius: ";
-                    cin >> radius;
+                    cout << fc_set_radius(scara);
                     cout << endl;
 
-                    cout << fc_set_thickness(scara,radius);
-
-                    cout << "q1: ";
-                    cin >> q1;
+                    cout << fc_set_q1(scara);
                     cout << endl;
 
-                    cout << fc_set_thickness(scara,q1);
-
-                    cout << "q2: ";
-                    cin >> q2;
+                    cout << fc_set_q2(scara);
                     cout << endl;
 
-                    cout << fc_set_thickness(scara,q2);
+                    cout << fc_set_frame(scara);
+                    cout << endl;
                     
                     cout << endl;
                     break;

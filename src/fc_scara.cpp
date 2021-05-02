@@ -1,70 +1,92 @@
 #include "fc_scara.h"
 
+int* fc_ask_parameters(int p[7]){
 
-fc_scara* fc_scara_init (int thickness, int length,  int radius, int q1, int q2, int x, int y){
-    
     cout << "Enter a value for each parameter: " << endl;
 
     cout << "thickness: ";
-    cin >> thickness;
+    cin >> p[0];
     
-    if (thickness <= 0){
+    if (p[0] <= 0){
         return NULL;
     }
     cout << endl;
 
     cout << "length: ";
-    cin >> length;
+    cin >> p[1];
 
-    if (4*thickness >= length|| length <= 0 || length > 200){
+    if (4*p[0] >= p[1]|| p[1] <= 0 || p[1] > 200){
         return NULL;
     }
     cout << endl;
 
     cout << "radius: ";
-    cin >> radius;
+    cin >> p[2];
 
-    if (radius <= 0 || 2*radius > thickness){
+    if (p[2] <= 0 || 2*p[2] > p[0]){
         return NULL;
     }
     cout << endl;
 
     cout << "q1: ";
-    cin >> q1;
+    cin >> p[3];
     cout << endl;
 
     cout << "q2: ";
-    cin >> q2;
-    if (q2 == 180){
+    cin >> p[4];
+    if (p[4] == 180){
         return  NULL;   
     }
     cout << endl;
 
     cout << "x: ";
-    cin >> x;
+    cin >> p[5];
     cout << endl;
 
     cout << "y: ";
-    cin >> y;
+    cin >> p[6];
     cout << endl;
 
-    /* 
+    //definition of the array of parameters
+
+    return p;
+    
+}
+
+fc_scara* fc_scara_init (int thickness,int length,int radius,int q1,int q2,int x,int y){
+    
+    if (thickness <= 0){
+        return NULL;
+    }
+    else if (4*thickness >= length|| length <= 0 || length > 200){
+        return NULL;
+    }
+    else if (radius <= 0 || 2*radius > thickness){
+        return NULL;
+    }
+    else if (q2 == 180){
+        return  NULL;   
+    }
+    else{
+        /* 
         definition of a pointer to the struct scara 
         and initialization of a variable of type fc_scara with 
         dynamic memory allocation
-    */
-   fc_scara* robot = new fc_scara;
+            */
+        fc_scara* robot = new fc_scara;
 
-   robot -> thickness = thickness;
-   robot -> length = length;
-   robot -> radius = radius;
-   robot -> q1 = q1;
-   robot -> q2 = q2;
-   robot -> origin.x = x;
-   robot -> origin.y = y;
-   robot -> svg_width = (length*2);
+        robot -> thickness = thickness;
+        robot -> length = length;
+        robot -> radius = radius;
+        robot -> q1 = q1;
+        robot -> q2 = q2;
+        robot -> origin.x = x;
+        robot -> origin.y = y;
+        robot -> svg_width = (length*2);
 
-   return robot; // returning the pointer to the created structure
+        return robot; // returning the pointer to the created structure
+
+    }
 }
 
 string fc_scara_to_svg(fc_scara* scara){
@@ -99,8 +121,14 @@ string fc_scara_to_svg(fc_scara* scara){
     return scara_svg;
    }
 
-   int fc_set_thickness(fc_scara* robot,  int new_thickness){
+   int fc_set_thickness(fc_scara* robot){
 
+       //set thickness
+        int new_thickness;
+        cout << "thickness: ";
+        cin >> new_thickness;
+        cout << endl;
+                    
        if (new_thickness <= 0|| 4*new_thickness >= robot->length|| new_thickness <= (robot -> radius)*2){
            return 1;
        };
@@ -108,7 +136,12 @@ string fc_scara_to_svg(fc_scara* scara){
        return 0;
    }
 
-   int fc_set_length(fc_scara* robot, int new_length){
+   int fc_set_length(fc_scara* robot){
+
+        int new_length;
+        cout << "length: ";
+        cin >> new_length;
+        cout << endl;
 
        if (new_length > 200 || new_length <= 0){
            return 1;
@@ -118,7 +151,13 @@ string fc_scara_to_svg(fc_scara* scara){
        return 0;
    }
 
-   int fc_set_radius(fc_scara* robot, int new_radius){
+   int fc_set_radius(fc_scara* robot){
+
+        int new_radius;
+        cout << "radius: ";
+        cin >> new_radius;
+        cout << endl;
+
        if (2 * new_radius > (robot -> thickness) || new_radius <= 0){
            return 1;
        };
@@ -127,12 +166,24 @@ string fc_scara_to_svg(fc_scara* scara){
        return 0;
    }
 
-   int fc_set_q1(fc_scara* robot, int new_q1){
+   int fc_set_q1(fc_scara* robot){
+        
+        int new_q1;
+        cout << "q1: ";
+        cin >> new_q1;
+        cout << endl;
+
        robot-> q1 = new_q1;
        return 0;
    }
 
-   int fc_set_q2(fc_scara* robot, int new_q2){
+   int fc_set_q2(fc_scara* robot){
+
+        int new_q2;
+        cout << "q2: ";
+        cin >> new_q2;
+        cout << endl;
+
        if (new_q2 == 180){
            return 1;
        }
@@ -142,7 +193,18 @@ string fc_scara_to_svg(fc_scara* scara){
 
 
 
-   int fc_set_frame(fc_scara* robot, int new_x, int new_y){
+   int fc_set_frame(fc_scara* robot){
+       int new_x;
+       int new_y;
+
+       cout << "x: ";
+       cin >> new_x;
+       cout << endl;
+
+       cout << "y: ";
+       cin >> new_y;
+       cout << endl;
+       
        if(new_x < 0 || new_y < 0){
            return 1;
        };
@@ -214,7 +276,7 @@ string fc_scara_to_svg(fc_scara* scara){
     string aux;
 
     // parameters from transformation of the svg file
-    string p = "= \""; // every instruction in the svg strats with this sequence of chars
+    string p = "= \""; // every instruction in the svg starts with this sequence of chars
     size_t found = content.find(svg_head); // skip declaration of svg file
     size_t found1 = content.find(p,found); // find the first occurence in the file of string p startin from group definition <g
     size_t found2 = content.find("\"", found1+3); // find the first occurence of rottion directive
