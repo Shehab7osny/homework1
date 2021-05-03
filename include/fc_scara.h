@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <ctype.h>
 
 #include "fc_svg.h"
 
@@ -166,4 +167,8 @@ string fc_scara_save(fc_scara* scara);
 */
 int* fc_ask_parameters(int p[7]);
 
+/**
+ * Check whether the given input is an int or not 
+*/
+int fc_check_input(string us_input);
 #endif

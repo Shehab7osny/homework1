@@ -93,22 +93,26 @@ int main() {
                     }
 
                 }
-                pt = fc_ask_parameters(p);
-
-                if (pt == NULL){
-                    cout << endl;
-                    cout << "constraint violated, exit from editing" << endl;
-                    cout << endl;
-                    break;
-                }
                 else{
-                    //initialization and save to a file of the new struct:
-                    scara = fc_scara_init(p[0],p[1],p[2],p[3],p[4],p[5],p[6]);
-                    cout << endl;
-                    cout << "New structure created succesfully!" << endl;
-                    cout << endl;
-                    break;
+                
+                    pt = fc_ask_parameters(p);
+
+                    if (pt == NULL){
+                        cout << endl;
+                        cout << "constraint violated" << endl;
+                        cout << endl;
+                        break;
+                    }
+                    else{
+                        //initialization and save to a file of the new struct:
+                        scara = fc_scara_init(pt[0],pt[1],pt[2],pt[3],pt[4],pt[5],pt[6]);
+                        cout << endl;
+                        cout << "New structure created succesfully!" << endl;
+                        cout << endl;
+                        break;
+                    }
                 }
+                
         
 
             }

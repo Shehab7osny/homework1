@@ -1,22 +1,30 @@
 #include "fc_scara.h"
 
 int* fc_ask_parameters(int p[7]){
-
+    
+    string parameter; //auxiliary string
     cout << "Enter a value for each parameter: " << endl;
 
     cout << "thickness: ";
-    cin >> p[0];
-    
-    if (p[0] <= 0){
+    //cin >> p[0];
+    cin >> parameter;
+
+    if(fc_check_input(parameter) == 1 || fc_check_input(parameter) <=0){
         return NULL;
+    }
+    else{
+        p[0] = stoi(parameter);
     }
     cout << endl;
 
     cout << "length: ";
-    cin >> p[1];
+    cin >> parameter;
 
-    if (4*p[0] >= p[1]|| p[1] <= 0 || p[1] > 200){
+    if(fc_check_input(parameter) == 1 || fc_check_input(parameter) <=0 || fc_check_input(parameter) > 200 || 4*p[0] >= fc_check_input(parameter)){
         return NULL;
+    }
+    else{
+        p[1] = stoi(parameter);
     }
     cout << endl;
 
@@ -30,11 +38,14 @@ int* fc_ask_parameters(int p[7]){
 
     cout << "q1: ";
     cin >> p[3];
+    /*if (isdigit(p[3])==false){
+        return  NULL;   
+    }*/
     cout << endl;
 
     cout << "q2: ";
     cin >> p[4];
-    if (p[4] == 180){
+    if (p[4] == 180 ){
         return  NULL;   
     }
     cout << endl;
@@ -363,5 +374,17 @@ string fc_scara_save(fc_scara* scara){
 
 }
 
+int fc_check_input(string us_input){
+    
+    try{
+        return stoi(us_input);
+    }
+    catch(const invalid_argument& ia){
+        cout << ia.what() <<endl;
+    }
+    catch(int param){
+    }
+    return 1;
+}
 
 
